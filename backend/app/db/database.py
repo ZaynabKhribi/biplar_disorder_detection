@@ -15,7 +15,7 @@ async def connect_db():
     await _db.screenings.create_index([("patientId", 1), ("createdAt", -1)])
     await _db.audit_logs.create_index("timestamp")
     await _db.alerts.create_index([("patientId", 1), ("resolved", 1)])
-    print("✅ MongoDB connected and indexes ensured")
+    print("MongoDB connected and indexes ensured")
 
 
 async def close_db():

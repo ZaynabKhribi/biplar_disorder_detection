@@ -58,8 +58,12 @@ async def get_mood_logs(
     # Patients can only fetch their own logs
     if current_user["role"] == "patient":
         patient = await db.patients().find_one({"userId": current_user["id"]})
-        if not patient or str(patient["_id"]) != patient_id:
+        if not patient:
             raise HTTPException(status_code=403, detail="Access denied")
+        patient_str_id = str(patient["_id"])
+        if patient_str_id != patient_id and current_user["id"] != patient_id:
+            raise HTTPException(status_code=403, detail="Access denied")
+        patient_id = patient_str_id  # Normalize
         # Free: 7 days, Premium: 90 days
         days = 90 if current_user["plan"] == "premium" else 7
     else:

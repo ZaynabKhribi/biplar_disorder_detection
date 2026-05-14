@@ -22,8 +22,12 @@ async def download_pdf_report(
     # Patients can only download their own report
     if current_user["role"] == "patient":
         patient_doc = await db.patients().find_one({"userId": current_user["id"]})
-        if not patient_doc or str(patient_doc["_id"]) != patient_id:
+        if not patient_doc:
             raise HTTPException(status_code=403, detail="Access denied")
+        patient_str_id = str(patient_doc["_id"])
+        if patient_str_id != patient_id and current_user["id"] != patient_id:
+            raise HTTPException(status_code=403, detail="Access denied")
+        patient_id = patient_str_id  # Normalize
 
     # Fetch the latest screening result
     screening = await db.screenings().find_one(

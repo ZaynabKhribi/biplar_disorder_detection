@@ -50,8 +50,12 @@ async def get_screening_history(
     # Patients can only view their own history; professionals/admins can view any
     if current_user["role"] == "patient":
         patient = await db.patients().find_one({"userId": current_user["id"]})
-        if not patient or str(patient["_id"]) != patient_id:
+        if not patient:
             raise HTTPException(status_code=403, detail="Access denied")
+        patient_str_id = str(patient["_id"])
+        if patient_str_id != patient_id and current_user["id"] != patient_id:
+            raise HTTPException(status_code=403, detail="Access denied")
+        patient_id = patient_str_id  # Normalize
 
     cursor = db.screenings().find({"patientId": patient_id}, sort=[("createdAt", -1)])
     docs = await cursor.to_list(length=50)

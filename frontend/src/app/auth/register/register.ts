@@ -29,7 +29,7 @@ import { NotificationService } from '../../core/services/notification.service';
           <div class="form-group">
             <label class="form-label">Password</label>
             <input id="reg-password" class="form-control" type="password"
-                   [(ngModel)]="password" name="password" placeholder="Min. 8 characters" required />
+                   [(ngModel)]="password" name="password" placeholder="Min. 8 characters" minlength="8" required />
           </div>
           <div class="form-group">
             <label class="form-label">I am a…</label>
@@ -72,7 +72,16 @@ export class RegisterComponent {
     this.loading = true;
     this.auth.register({ name: this.name, email: this.email, password: this.password, role: this.role }).subscribe({
       next: () => { this.notif.success('Account created!'); this.auth.redirectToDashboard(); },
-      error: (e) => { this.notif.error(e.error?.detail ?? 'Registration failed'); this.loading = false; },
+      error: (e) => { 
+        let errorMsg = 'Registration failed';
+        if (e.status === 422 && Array.isArray(e.error?.detail)) {
+          errorMsg = e.error.detail.map((err: any) => \`\${err.loc.join('.')} : \${err.msg}\`).join(', ');
+        } else if (e.error?.detail) {
+          errorMsg = typeof e.error.detail === 'string' ? e.error.detail : JSON.stringify(e.error.detail);
+        }
+        this.notif.error(errorMsg); 
+        this.loading = false; 
+      },
     });
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { PatientsService } from '../../../core/services/patients.service';
+import { PatientsService } from '../../core/services/patients.service';
 
 @Component({
   selector: 'app-patients',

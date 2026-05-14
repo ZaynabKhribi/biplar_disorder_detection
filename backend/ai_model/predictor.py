@@ -46,7 +46,7 @@ def load_models(stage1_path: str, stage2_path: str) -> None:
     global _stage1, _stage2
     _stage1 = joblib.load(stage1_path)
     _stage2 = joblib.load(stage2_path)
-    print(f"✅ AI models loaded — Stage1: {type(_stage1.named_steps['model']).__name__}, "
+    print(f"AI models loaded — Stage1: {type(_stage1.named_steps['model']).__name__}, "
           f"Stage2: {type(_stage2.named_steps['model']).__name__}")
 
 

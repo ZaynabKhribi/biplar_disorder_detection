@@ -2,9 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { PatientsService } from '../../../core/services/patients.service';
-import { NotificationService } from '../../../core/services/notification.service';
-import { ConfidenceGaugeComponent } from '../../../shared/components/confidence-gauge/confidence-gauge';
+import { PatientsService } from '../../core/services/patients.service';
+import { NotificationService } from '../../core/services/notification.service';
+import { ConfidenceGaugeComponent } from '../../shared/components/confidence-gauge/confidence-gauge';
 
 @Component({
   selector: 'app-patient-detail',

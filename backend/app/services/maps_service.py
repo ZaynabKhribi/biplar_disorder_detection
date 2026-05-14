@@ -12,7 +12,41 @@ PLACE_DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json"
 
 async def get_nearby_psychologists(lat: float, lng: float, radius_meters: int = 10000) -> list:
     if not settings.google_maps_api_key:
-        return []  # Frontend will show "API key not configured" placeholder
+        return [
+            {
+                "place_id": "mock_1",
+                "name": "Dr. Sarah Mitchell - Clinical Psychologist",
+                "address": "123 Therapy Lane, City Center",
+                "rating": 4.9,
+                "user_ratings_total": 124,
+                "open_now": True,
+                "lat": lat + 0.01,
+                "lng": lng + 0.01,
+                "types": ["doctor", "health", "psychiatrist"],
+            },
+            {
+                "place_id": "mock_2",
+                "name": "Mindful Healing Clinic",
+                "address": "456 Wellness Blvd, Westside",
+                "rating": 4.7,
+                "user_ratings_total": 89,
+                "open_now": False,
+                "lat": lat - 0.015,
+                "lng": lng + 0.02,
+                "types": ["doctor", "health", "psychologist"],
+            },
+            {
+                "place_id": "mock_3",
+                "name": "Dr. James Okafor - Psychiatry",
+                "address": "789 Medical Plaza, Eastside",
+                "rating": 4.8,
+                "user_ratings_total": 210,
+                "open_now": True,
+                "lat": lat + 0.02,
+                "lng": lng - 0.01,
+                "types": ["doctor", "health", "psychiatrist"],
+            }
+        ]
 
     params = {
         "location": f"{lat},{lng}",

@@ -2,10 +2,10 @@ import { Component, OnInit, ElementRef, ViewChild, inject } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Chart, registerables } from 'chart.js';
-import { MoodService } from '../../../core/services/mood.service';
-import { AuthService } from '../../../core/services/auth.service';
-import { NotificationService } from '../../../core/services/notification.service';
-import { PremiumGateComponent } from '../../../shared/components/premium-gate/premium-gate';
+import { MoodService } from '../../core/services/mood.service';
+import { AuthService } from '../../core/services/auth.service';
+import { NotificationService } from '../../core/services/notification.service';
+import { PremiumGateComponent } from '../../shared/components/premium-gate/premium-gate';
 
 Chart.register(...registerables);
 

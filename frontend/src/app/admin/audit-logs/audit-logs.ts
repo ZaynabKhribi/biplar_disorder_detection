@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminService } from '../../../core/services/admin.service';
+import { AdminService } from '../../core/services/admin.service';
 
 @Component({
   selector: 'app-audit-logs',

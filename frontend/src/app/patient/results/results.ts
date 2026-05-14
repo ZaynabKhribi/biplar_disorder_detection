@@ -1,10 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
-import { ScreeningService } from '../../../core/services/screening.service';
-import { ConfidenceGaugeComponent } from '../../../shared/components/confidence-gauge/confidence-gauge';
-import { PremiumGateComponent } from '../../../shared/components/premium-gate/premium-gate';
+import { AuthService } from '../../core/services/auth.service';
+import { ScreeningService } from '../../core/services/screening.service';
+import { ConfidenceGaugeComponent } from '../../shared/components/confidence-gauge/confidence-gauge';
+import { PremiumGateComponent } from '../../shared/components/premium-gate/premium-gate';
 
 @Component({
   selector: 'app-results',

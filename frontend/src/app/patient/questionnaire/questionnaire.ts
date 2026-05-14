@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ScreeningService } from '../../../core/services/screening.service';
-import { NotificationService } from '../../../core/services/notification.service';
+import { ScreeningService } from '../../core/services/screening.service';
+import { NotificationService } from '../../core/services/notification.service';
 
 @Component({
   selector: 'app-questionnaire',
